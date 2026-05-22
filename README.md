@@ -106,10 +106,11 @@ Open to **internships**, **hackathon collabs**, **open-source contributions**, a
 ## 🎨 Portfolio Website
 
 Check out my interactive portfolio website built with **Vanilla HTML, CSS, and JavaScript**:
-- Live at: Portfolio deployed on Azure
+- 🌐 **Live:** [blue-rock-009e22d00.7.azurestaticapps.net](https://blue-rock-009e22d00.7.azurestaticapps.net)
 - Custom animations & particle effects
 - Responsive design (mobile-first)
 - Smooth scroll interactions
+- Deployed on Azure Static Web App
 
 ---
 
