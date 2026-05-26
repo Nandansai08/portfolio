@@ -106,7 +106,7 @@ Open to **internships**, **hackathon collabs**, **open-source contributions**, a
 ## 🎨 Portfolio Website
 
 Check out my interactive portfolio website built with **Vanilla HTML, CSS, and JavaScript**:
-- 🌐 **Live:** [blue-rock-009e22d00.7.azurestaticapps.net](https://blue-rock-009e22d00.7.azurestaticapps.net)
+- 🌐 **Live:** [nandan.engineer](https://nandan.engineer)
 - Custom animations & particle effects
 - Responsive design (mobile-first)
 - Smooth scroll interactions
