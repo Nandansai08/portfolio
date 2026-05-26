@@ -10,6 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
@@ -21,12 +22,24 @@
 
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-close" id="mobileClose">✕</button>
-        <a href="#about" onclick="closeMobile()">About</a>
-        <a href="#skills" onclick="closeMobile()">Skills</a>
-        <a href="#experience" onclick="closeMobile()">Experience</a>
-        <a href="#projects" onclick="closeMobile()">Projects</a>
-        <a href="#contact" onclick="closeMobile()">Contact</a>
+        <div class="mobile-menu-drawer">
+            <button class="mobile-close" id="mobileClose">✕</button>
+            <div class="mobile-menu-links">
+                <a href="#about" onclick="closeMobile()">About</a>
+                <a href="#skills" onclick="closeMobile()">Skills</a>
+                <a href="#experience" onclick="closeMobile()">Experience</a>
+                <a href="#projects" onclick="closeMobile()">Projects</a>
+                <a href="#contact" onclick="closeMobile()">Contact</a>
+            </div>
+            <div class="mobile-menu-footer">
+                <div class="mm-divider"></div>
+                <p>Let's Connect</p>
+                <div class="mm-socials">
+                    <a href="https://github.com/Nandansai08" target="_blank">⌥ GitHub</a>
+                    <a href="https://linkedin.com/in/nandan-sai-chigurupati" target="_blank">in LinkedIn</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- NAV -->
@@ -466,6 +479,11 @@
         document.getElementById('hamburger').onclick = () => document.getElementById('mobileMenu').classList.add('open');
         document.getElementById('mobileClose').onclick = () => document.getElementById('mobileMenu').classList.remove('open');
         function closeMobile() { document.getElementById('mobileMenu').classList.remove('open') }
+        document.getElementById('mobileMenu').onclick = (e) => {
+            if (e.target === document.getElementById('mobileMenu')) {
+                closeMobile();
+            }
+        };
 
         /* ── Contact mailto ── */
         const contactForm = document.getElementById('contactForm');
