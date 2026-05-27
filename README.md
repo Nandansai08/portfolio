@@ -73,13 +73,13 @@ Sri Chaitanya College of Education
 
 ## 💼 Experience
 
-**Volunteer — Agent Slam** | Jan 2026 – Feb 2026  
-*Srijan · IIT-ISM Dhanbad's Annual Technical Fest*  
-Organized and ran Agent Slam — an AI/ML themed competitive event for students across campuses.
-
-**Volunteer** | Mar 2026 – Apr 2026  
+**Volunteer — Agent Slam** | Mar 2026 – Apr 2026  
 *Dept. of Computer Science & Engineering — IIT (ISM) Dhanbad*  
-Contributed to departmental activities and academic initiatives.
+Organized and ran Agent Slam — an AI/ML themed competitive event conducted by the CSE department at IIT (ISM) Dhanbad.
+
+**Volunteer** | Jan 2026 – Feb 2026  
+*Srijan · IIT-ISM Dhanbad's Annual Cultural Fest*  
+Volunteered at Srijan, the annual cultural festival of IIT (ISM) Dhanbad, contributing to event coordination, logistics, and guest hospitality.
 
 ## 📊 Quick Stats
 
