@@ -472,7 +472,7 @@
         const botcheckInput = document.getElementById('contactBotcheck');
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
-        const WEB3FORMS_PUBLIC_ACCESS_KEY = contactForm.dataset.web3formsKey || '';
+        const web3FormsPublicAccessKey = contactForm.dataset.web3formsKey || '';
 
         // Error display elements
         const nameError = document.getElementById('nameError');
@@ -591,8 +591,8 @@
             messageInput.disabled = true;
 
             try {
-                if (!WEB3FORMS_PUBLIC_ACCESS_KEY) {
-                    throw new Error('Missing Web3Forms key configuration.');
+                if (!web3FormsPublicAccessKey) {
+                    throw new Error('Web3Forms access key not found. Set data-web3forms-key on the contact form.');
                 }
 
                 const response = await fetch('https://api.web3forms.com/submit', {
@@ -602,7 +602,7 @@
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
-                        access_key: WEB3FORMS_PUBLIC_ACCESS_KEY,
+                        access_key: web3FormsPublicAccessKey,
                         name,
                         email,
                         subject: `Portfolio Inquiry: ${subject}`,
