@@ -1,0 +1,19 @@
+# Azure Functions local settings (contains secrets - NEVER commit)
+api/local.settings.json
+
+# Node modules
+node_modules/
+api/node_modules/
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/

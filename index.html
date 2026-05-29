@@ -36,7 +36,7 @@
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
-            <a class="hire-link" href="mailto:nandansaichigurupati08@gmail.com?subject=Hiring%20Inquiry%20from%20Portfolio">
+            <a class="hire-link" href="#contact">
                 Hire
             </a>
         </nav>
@@ -318,33 +318,53 @@
                     and interesting problems worth solving. Always happy to chat.
                 </p>
                 <div class="footer-links">
-                    <a href="mailto:nandansaichigurupati08@gmail.com">Email</a>
+                    <a href="#contactForm">Send Message</a>
                     <a href="https://github.com/Nandansai08" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://linkedin.com/in/nandan-sai-chigurupati" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
 
-            <form class="contact-form reveal delay-1" id="contactForm">
-                <label>
-                    <span>Name</span>
-                    <input id="contactName" name="name" type="text" autocomplete="name" placeholder="Your name" required>
-                </label>
-                <label>
-                    <span>Email</span>
-                    <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="your@email.com"
-                        required>
-                </label>
-                <label>
-                    <span>Subject</span>
-                    <input id="contactSubject" name="subject" type="text" placeholder="Project, internship, or collab"
-                        required>
-                </label>
-                <label>
-                    <span>Message</span>
-                    <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me what you want to build."
-                        required></textarea>
-                </label>
-                <button type="submit">Send Message</button>
+            <form class="contact-form reveal delay-1" id="contactForm" novalidate>
+                <div class="hp-container" aria-hidden="true">
+                    <input id="contactBotcheck" name="botcheck" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="contactName">Name</label>
+                    <div class="input-wrapper">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <input id="contactName" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+                    </div>
+                    <span class="validation-error" id="nameError" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-group">
+                    <label for="contactEmail">Email</label>
+                    <div class="input-wrapper">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="your@email.com" required>
+                    </div>
+                    <span class="validation-error" id="emailError" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-group">
+                    <label for="contactSubject">Subject</label>
+                    <div class="input-wrapper">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <input id="contactSubject" name="subject" type="text" placeholder="Project, internship, or collab" required>
+                    </div>
+                    <span class="validation-error" id="subjectError" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-group">
+                    <label for="contactMessage">Message</label>
+                    <div class="input-wrapper">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon" style="top: 1.25rem;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me what you want to build." required></textarea>
+                    </div>
+                    <span class="validation-error" id="messageError" role="alert" aria-live="polite"></span>
+                </div>
+                <button type="submit" id="submitBtn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                </button>
+                <div id="formStatus" class="form-status" role="alert" aria-live="assertive"></div>
             </form>
         </section>
     </main>
@@ -360,7 +380,7 @@
                 <div class="footer-links">
                     <a href="https://linkedin.com/in/nandan-sai-chigurupati" target="_blank" rel="noopener">LinkedIn</a>
                     <a href="https://github.com/Nandansai08" target="_blank" rel="noopener">GitHub</a>
-                    <a href="mailto:nandansaichigurupati08@gmail.com">Email</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
             <div>
@@ -443,16 +463,173 @@
         }
         setTimeout(typeLoop, 1400);
 
-        /* ── Contact form ── */
+        /* ── Contact form submission & validation ── */
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (event) => {
+        const nameInput = document.getElementById('contactName');
+        const emailInput = document.getElementById('contactEmail');
+        const subjectInput = document.getElementById('contactSubject');
+        const messageInput = document.getElementById('contactMessage');
+        const botcheckInput = document.getElementById('contactBotcheck');
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
+
+        // Error display elements
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const subjectError = document.getElementById('subjectError');
+        const messageError = document.getElementById('messageError');
+
+        // Email validation helper
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Live validation clear on user input
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.trim().length >= 2) {
+                nameError.textContent = '';
+                nameInput.removeAttribute('aria-invalid');
+            }
+        });
+
+        emailInput.addEventListener('input', () => {
+            if (isValidEmail(emailInput.value.trim())) {
+                emailError.textContent = '';
+                emailInput.removeAttribute('aria-invalid');
+            }
+        });
+
+        subjectInput.addEventListener('input', () => {
+            if (subjectInput.value.trim().length >= 3) {
+                subjectError.textContent = '';
+                subjectInput.removeAttribute('aria-invalid');
+            }
+        });
+
+        messageInput.addEventListener('input', () => {
+            if (messageInput.value.trim().length >= 10) {
+                messageError.textContent = '';
+                messageInput.removeAttribute('aria-invalid');
+            }
+        });
+
+        // Handle submission
+        contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const name = document.getElementById('contactName').value.trim();
-            const email = document.getElementById('contactEmail').value.trim();
-            const subject = document.getElementById('contactSubject').value.trim();
-            const message = document.getElementById('contactMessage').value.trim();
-            const body = [`Name: ${name}`, `Email: ${email}`, '', message].join('\n');
-            window.location.href = `mailto:nandansaichigurupati08@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Clear previous statuses
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+            
+            // Reset error fields
+            nameError.textContent = '';
+            emailError.textContent = '';
+            subjectError.textContent = '';
+            messageError.textContent = '';
+            
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const subject = subjectInput.value.trim();
+            const message = messageInput.value.trim();
+            const botcheck = botcheckInput.value.trim();
+
+            // Client-side validation
+            let hasErrors = false;
+
+            if (name.length < 2) {
+                nameError.textContent = 'Name must be at least 2 characters long.';
+                nameInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            }
+
+            if (!isValidEmail(email)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            }
+
+            if (subject.length < 3) {
+                subjectError.textContent = 'Subject must be at least 3 characters long.';
+                subjectInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            }
+
+            if (message.length < 10) {
+                messageError.textContent = 'Message must be at least 10 characters long.';
+                messageInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            }
+
+            if (hasErrors) {
+                // Focus the first error field
+                const firstInvalid = contactForm.querySelector('[aria-invalid="true"]');
+                if (firstInvalid) firstInvalid.focus();
+                return;
+            }
+
+            // Rate Limiting (Client-side): 60 seconds interval
+            const LAST_SUBMIT_KEY = 'nandan_portfolio_last_submit';
+            const rateLimitDuration = 60 * 1000; // 60 seconds
+            const lastSubmit = localStorage.getItem(LAST_SUBMIT_KEY);
+            const now = Date.now();
+
+            if (lastSubmit && (now - parseInt(lastSubmit, 10)) < rateLimitDuration) {
+                const waitSecs = Math.ceil((rateLimitDuration - (now - parseInt(lastSubmit, 10))) / 1000);
+                formStatus.textContent = `Please wait ${waitSecs} seconds before sending another message.`;
+                formStatus.className = 'form-status error';
+                return;
+            }
+
+            // Set Loading State
+            contactForm.classList.add('loading');
+            submitBtn.disabled = true;
+            nameInput.disabled = true;
+            emailInput.disabled = true;
+            subjectInput.disabled = true;
+            messageInput.disabled = true;
+
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, subject, message, botcheck })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Success state
+                    formStatus.textContent = data.message || 'Your message has been sent successfully!';
+                    formStatus.className = 'form-status success';
+                    
+                    // Reset Form
+                    contactForm.reset();
+                    
+                    // Save Rate Limit Timestamp
+                    localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
+                } else {
+                    // Error state returned from API
+                    formStatus.textContent = data.error || 'There was a problem submitting your message. Please try again.';
+                    formStatus.className = 'form-status error';
+                }
+            } catch (error) {
+                // Connection errors
+                formStatus.textContent = 'Unable to connect. Please check your internet connection and try again.';
+                formStatus.className = 'form-status error';
+                console.error('Submission Error:', error);
+            } finally {
+                // Reset Loading State
+                contactForm.classList.remove('loading');
+                submitBtn.disabled = false;
+                nameInput.disabled = false;
+                emailInput.disabled = false;
+                subjectInput.disabled = false;
+                messageInput.disabled = false;
+            }
         });
     </script>
 </body>
