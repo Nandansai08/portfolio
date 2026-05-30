@@ -472,7 +472,6 @@
         const botcheckInput = document.getElementById('contactBotcheck');
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
-        const web3FormsPublicAccessKey = '66be9524-4d26-4626-9db0-448da331fe89';
 
         // Error display elements
         const nameError = document.getElementById('nameError');
@@ -592,21 +591,10 @@
 
             try {
 
-                const response = await fetch('https://api.web3forms.com/submit', {
+                const response = await fetch('/api/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        access_key: web3FormsPublicAccessKey,
-                        name,
-                        email,
-                        subject: `Portfolio Inquiry: ${subject}`,
-                        message,
-                        from_name: 'Nandan Sai Portfolio',
-                        botcheck
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, subject, message, botcheck })
                 });
 
                 const data = await response.json();

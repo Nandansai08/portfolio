@@ -1,14 +1,15 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "Azure Static Web Apps API for Secure Contact Form Submission",
+  "description": "Azure Functions API — Contact form via Resend",
   "main": "src/functions/submit.js",
   "scripts": {
-    "build": "echo No build needed",
+    "build": "echo No build step required",
     "start": "func start"
   },
   "dependencies": {
-    "@azure/functions": "^4.0.0"
+    "@azure/functions": "^4.0.0",
+    "resend": "^4.5.1"
   },
   "engines": {
     "node": ">=18.0.0"
