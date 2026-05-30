@@ -324,7 +324,7 @@
                 </div>
             </div>
 
-            <form class="contact-form reveal delay-1" id="contactForm" data-web3forms-key="66be9524-4d26-4626-9db0-448da331fe89" novalidate>
+            <form class="contact-form reveal delay-1" id="contactForm" novalidate>
                 <div class="hp-container" aria-hidden="true">
                     <input id="contactBotcheck" name="botcheck" type="text" tabindex="-1" autocomplete="off">
                 </div>
@@ -472,7 +472,7 @@
         const botcheckInput = document.getElementById('contactBotcheck');
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
-        const web3FormsPublicAccessKey = contactForm.dataset.web3formsKey || '';
+        const web3FormsPublicAccessKey = '66be9524-4d26-4626-9db0-448da331fe89';
 
         // Error display elements
         const nameError = document.getElementById('nameError');
@@ -591,9 +591,6 @@
             messageInput.disabled = true;
 
             try {
-                if (!web3FormsPublicAccessKey) {
-                    throw new Error('Web3Forms access key not found. Set data-web3forms-key on the contact form.');
-                }
 
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
