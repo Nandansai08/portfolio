@@ -927,6 +927,123 @@ textarea {
     flex-grow: 1;
 }
 
+.project-screenshot {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    margin: 1rem 0 1.25rem;
+    border: 1px solid rgba(28, 27, 27, 0.08);
+    filter: grayscale(15%);
+    transition: filter 400ms ease, transform 400ms ease;
+}
+
+.project-card:hover .project-screenshot {
+    filter: grayscale(0%);
+    transform: scale(1.01);
+}
+
+/* ════════════════════════════════════
+   OPEN SOURCE SECTION
+   ════════════════════════════════════ */
+.oss-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: var(--section-gap);
+    padding: 1.75rem 2.5rem;
+    background: var(--primary);
+    color: #fff;
+}
+
+.oss-label {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary-muted);
+}
+
+.oss-banner-copy p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 560px;
+}
+
+.oss-banner-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.project-grid-oss { margin-top: 0; }
+
+.project-card-oss {
+    border-top: 3px solid var(--primary) !important;
+    background: var(--surface-low);
+}
+
+.oss-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0;
+}
+
+.oss-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.oss-badge {
+    padding: 0.25rem 0.65rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.oss-badge-open {
+    background: rgba(23, 49, 36, 0.08);
+    color: var(--primary);
+    border: 1px solid rgba(23, 49, 36, 0.2);
+}
+
+.oss-badge-prs {
+    background: rgba(144, 75, 54, 0.08);
+    color: var(--secondary);
+    border: 1px solid rgba(144, 75, 54, 0.2);
+}
+
+.oss-contribute {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(23, 49, 36, 0.04);
+    border-left: 3px solid var(--primary);
+    font-size: 0.82rem;
+}
+
+.oss-contribute svg { color: var(--primary); flex-shrink: 0; }
+
+.oss-contribute a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 220ms ease;
+}
+
+.oss-contribute a:hover { color: var(--secondary); }
+
 /* ════════════════════════════════════
    CONTACT
    ════════════════════════════════════ */
