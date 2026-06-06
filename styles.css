@@ -155,8 +155,7 @@ textarea {
 .project-num,
 .toolkit-num,
 .timeline-period,
-.contact-form span,
-.site-footer h2 {
+.contact-form span {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -178,6 +177,27 @@ textarea {
 .nav-links a.active {
     padding-bottom: 5px;
     border-bottom: 2px solid currentColor;
+}
+
+.nav-resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    color: var(--primary) !important;
+    border: 1px solid rgba(23, 49, 36, 0.3) !important;
+    font-size: 0.72rem !important;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 220ms ease, color 220ms ease;
+    white-space: nowrap;
+}
+
+.nav-resume-link:hover {
+    background: var(--primary) !important;
+    color: #fff !important;
 }
 
 .hire-link {
@@ -944,6 +964,11 @@ textarea {
     transform: scale(1.01);
 }
 
+.project-screenshot-gif {
+    filter: grayscale(0%) !important;
+    height: 180px;
+}
+
 /* ════════════════════════════════════
    OPEN SOURCE SECTION
    ════════════════════════════════════ */
@@ -984,7 +1009,10 @@ textarea {
     flex-shrink: 0;
 }
 
-.project-grid-oss { margin-top: 0; }
+.project-grid-oss {
+    margin-top: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 
 .project-card-oss {
     border-top: 3px solid var(--primary) !important;
@@ -1146,8 +1174,8 @@ textarea {
     background: #fff;
 }
 
-.contact-form input:focus ~ .input-icon,
-.contact-form textarea:focus ~ .input-icon {
+.contact-form input:focus + .input-icon,
+.contact-form textarea:focus + .input-icon {
     color: var(--primary);
     transform: scale(1.06);
 }
@@ -1260,6 +1288,82 @@ textarea {
 }
 
 /* ════════════════════════════════════
+   ACHIEVEMENTS
+   ════════════════════════════════════ */
+.achievements-section {
+    padding-block: var(--section-gap);
+    border-top: 1px solid rgba(28, 27, 27, 0.1);
+}
+
+.achievements-heading {
+    max-width: 760px;
+    margin-bottom: 4rem;
+}
+
+.achievements-heading h2 {
+    margin: 1.2rem 0 0;
+    color: var(--primary);
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.8rem, 6vw, 5.6rem);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-left: 1px solid rgba(28, 27, 27, 0.1);
+    border-top: 1px solid rgba(28, 27, 27, 0.1);
+}
+
+.achievement-card {
+    padding: 2.5rem 2rem;
+    background: var(--surface-low);
+    border-right: 1px solid rgba(28, 27, 27, 0.1);
+    border-bottom: 1px solid rgba(28, 27, 27, 0.1);
+    transition: background 300ms ease, transform 300ms ease;
+}
+
+.achievement-card:hover {
+    background: var(--surface-container);
+    transform: translateY(-3px);
+}
+
+.achievement-card strong {
+    display: block;
+    color: var(--primary);
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.achievement-card strong em {
+    font-style: normal;
+    color: var(--secondary);
+}
+
+.ach-label {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.ach-context {
+    margin: 0.4rem 0 0;
+    color: var(--on-variant);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* ════════════════════════════════════
    FOOTER
    ════════════════════════════════════ */
 .site-footer {
@@ -1279,15 +1383,63 @@ textarea {
     margin-bottom: 1.5rem;
 }
 
-.site-footer h2 {
+.site-footer h3 {
     margin: 0 0 1.5rem;
     color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .site-footer p {
     margin: 0;
     color: var(--on-variant);
     line-height: 1.75;
+}
+
+.built-with-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(28, 27, 27, 0.08);
+}
+
+.built-with-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--outline);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.built-with-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.built-with-tags span {
+    padding: 0.25rem 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--on-variant);
+    background: rgba(28, 27, 27, 0.04);
+    border: 1px solid rgba(28, 27, 27, 0.1);
+    transition: color 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.built-with-tags span:hover {
+    color: var(--primary);
+    border-color: rgba(23, 49, 36, 0.25);
+    background: rgba(23, 49, 36, 0.05);
 }
 
 /* ════════════════════════════════════
@@ -1359,7 +1511,10 @@ textarea {
         transform: translateY(-6px) rotate(-45deg);
     }
 
-    .nav-links,
+    .nav-links {
+        display: none;
+    }
+
     .hire-link {
         display: none;
     }
@@ -1417,6 +1572,7 @@ textarea {
     .about-education,
     .project-featured,
     .project-grid,
+    .project-grid-oss,
     .contact,
     .footer-grid {
         grid-template-columns: 1fr;
@@ -1424,6 +1580,26 @@ textarea {
 
     .skills-grid-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Resume link in mobile nav */
+    .nav-resume-link {
+        border-top: 1px solid rgba(28, 27, 27, 0.08) !important;
+        margin-top: 0.4rem;
+    }
+
+    /* Hire shown as last mobile menu item */
+    .nav-hire-mobile {
+        display: flex !important;
+        background: var(--primary) !important;
+        color: #fff !important;
+        border-color: var(--primary) !important;
+        justify-content: center;
+        font-weight: 700;
     }
 
     .hero-stats {
