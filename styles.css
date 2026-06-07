@@ -129,7 +129,7 @@ textarea {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: var(--gutter);
-    min-height: 88px;
+    min-height: 72px;
 }
 
 .brand {
@@ -245,6 +245,7 @@ textarea {
     min-height: 100vh;
     padding-top: 120px;
     padding-bottom: 2rem;
+    position: relative;
 }
 
 .hero-badge {
@@ -325,8 +326,9 @@ textarea {
 }
 
 .btn-primary:hover {
-    opacity: 0.82;
+    background: var(--primary-soft);
     transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(23, 49, 36, 0.18);
 }
 
 .btn-outline {
@@ -382,10 +384,34 @@ textarea {
     display: block;
     margin-top: 0.5rem;
     color: var(--on-variant);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* Hero Avatar */
+.hero-avatar {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--margin-desktop) + 20px);
+    transform: translateY(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    border: 4px solid var(--background);
+    box-shadow: 0 8px 32px rgba(23, 49, 36, 0.18);
+    pointer-events: none;
+    user-select: none;
 }
 
 .scroll-hint {
@@ -400,8 +426,8 @@ textarea {
 }
 
 @keyframes scrollBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
+    0%, 100% { transform: translateY(-4px); }
+    50% { transform: translateY(4px); }
 }
 
 /* ════════════════════════════════════
@@ -432,6 +458,9 @@ textarea {
     color: var(--primary);
     font-weight: 700;
     text-underline-offset: 4px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
     transition: color 220ms ease, font-style 220ms ease;
 }
 
@@ -778,6 +807,31 @@ textarea {
     line-height: 1.75;
 }
 
+.coursework-row {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(28, 27, 27, 0.08);
+}
+
+.coursework-row .kicker {
+    margin-bottom: 1rem;
+}
+
+.coursework-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.coursework-tags span {
+    padding: 0.4rem 0.9rem;
+    background: rgba(23, 49, 36, 0.05);
+    color: var(--primary);
+    border: 1px solid rgba(23, 49, 36, 0.15);
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
 /* ════════════════════════════════════
    PROJECTS
    ════════════════════════════════════ */
@@ -862,6 +916,19 @@ textarea {
     justify-content: center;
 }
 
+.project-featured-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(28, 27, 27, 0.08);
+    filter: grayscale(8%);
+    transition: filter 400ms ease;
+}
+
+.project-featured:hover .project-featured-img {
+    filter: grayscale(0%);
+}
+
 .dashboard-mock-mini {
     width: 100%;
     padding: 2.5rem;
@@ -928,6 +995,12 @@ textarea {
     border-top: 1px solid rgba(28, 27, 27, 0.12);
     display: flex;
     flex-direction: column;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(23, 49, 36, 0.08);
 }
 
 .project-card h3 {
@@ -1044,6 +1117,25 @@ textarea {
 }
 
 .oss-badge-prs {
+    background: rgba(144, 75, 54, 0.08);
+    color: var(--secondary);
+    border: 1px solid rgba(144, 75, 54, 0.2);
+}
+
+.oss-badge-wip {
+    background: rgba(65, 36, 36, 0.07);
+    color: var(--tertiary);
+    border: 1px solid rgba(65, 36, 36, 0.18);
+}
+
+.hackathon-badge {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     background: rgba(144, 75, 54, 0.08);
     color: var(--secondary);
     border: 1px solid rgba(144, 75, 54, 0.2);
@@ -1170,7 +1262,7 @@ textarea {
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(23, 49, 36, 0.08);
+    box-shadow: 0 0 0 3px rgba(23, 49, 36, 0.25);
     background: #fff;
 }
 
@@ -1341,7 +1433,8 @@ textarea {
     letter-spacing: -0.03em;
 }
 
-.achievement-card strong em {
+.achievement-card strong em,
+.achievement-card strong .ach-suffix {
     font-style: normal;
     color: var(--secondary);
 }
@@ -1605,6 +1698,14 @@ textarea {
     .hero-stats {
         grid-template-columns: repeat(2, auto);
         gap: 2rem;
+    }
+
+    .hero-avatar {
+        display: none;
+    }
+
+    .achievement-card {
+        padding: 1.5rem 1.25rem;
     }
 }
 
