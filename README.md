@@ -38,6 +38,16 @@ Hackathon prototype that accepts CSV, JSON, logs, PDFs, and scanned images — p
 
 ## Open Source
 
+### [PersonalAI](https://github.com/Nandansai08/personal-ai) — Local-First AI Assistant
+Runs on your own machine. Switch between Ollama, Anthropic, OpenAI, Groq, Gemini, Mistral, LM Studio and Together with one env var. Semantic memory, plugin system, MCP support, and a web UI — all from a single `npx` command.  
+`TypeScript` `Node.js` `Ollama` `MCP` `Anthropic` `Local-first`  
+[GitHub](https://github.com/Nandansai08/personal-ai) · [Issues](https://github.com/Nandansai08/personal-ai/issues)
+
+### [Whetstone](https://github.com/Nandansai08/whetstone) — AI Code Builder
+Turns a natural-language request into working code: clarifies a spec, plans subtasks, generates with a worker LLM, verifies with executable tests + a cross-model judge, refines on failure, and remembers what worked.  
+`Python` `LLM` `Agents` `Multi-model` `CLI`  
+[GitHub](https://github.com/Nandansai08/whetstone) · [Issues](https://github.com/Nandansai08/whetstone/issues)
+
 ### [GitGraph Studio](https://gitgraphstudio-f9hqfjbcaje4cyfj.centralindia-01.azurewebsites.net) — GitHub Contribution Graph Art Editor
 Visual pixel-art editor for your GitHub contribution graph. Design names, logos, and symbols — export a commit schedule that produces the exact pattern on your profile. Community gallery included.  
 `Next.js 15` `TypeScript` `Tailwind CSS` `Prisma` `Supabase` `Azure`  

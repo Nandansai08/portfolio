@@ -22,6 +22,201 @@
     --max: 1440px;
 }
 
+/* IMPROVED: dark theme — same brand hues (forest green, rust), inverted lightness */
+[data-theme="dark"] {
+    --background: #14110f;
+    --surface: #14110f;
+    --surface-low: #1c1816;
+    --surface-container: #231e1b;
+    --surface-high: #2b2521;
+    --surface-highest: #332c28;
+    --primary: #9fd3b0;
+    --primary-soft: #bce3c8;
+    --primary-muted: #5d7d68;
+    --secondary: #e2967d;
+    --secondary-soft: #3f2018;
+    --tertiary: #e8ad9c;
+    --on-surface: #efe9e4;
+    --on-variant: #c4bdb6;
+    --outline: #8c847d;
+    --outline-variant: #3a342f;
+    color-scheme: dark;
+}
+
+/* dark: filled brand controls flip to dark text on the light-sage fill */
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .btn-outline:hover,
+[data-theme="dark"] .hire-link,
+[data-theme="dark"] .contact-form button[type="submit"],
+[data-theme="dark"] .oss-banner,
+[data-theme="dark"] .nav-resume-link:hover,
+[data-theme="dark"] .nav-hire-mobile,
+[data-theme="dark"] .nav-links.open a.active,
+[data-theme="dark"] .nav-links.open a:hover {
+    color: var(--background) !important;
+}
+
+[data-theme="dark"] .oss-banner-copy p { color: rgba(20, 17, 15, 0.82) !important; }
+[data-theme="dark"] .oss-label { color: #1c3a2a !important; }
+[data-theme="dark"] ::selection { color: #14110f; }
+
+/* IMPROVED dark: depth + ambient glow instead of flat black, visible grid */
+[data-theme="dark"] body {
+    background-image:
+        radial-gradient(circle at 16% 10%, rgba(159, 211, 176, 0.07), transparent 28rem),
+        radial-gradient(circle at 84% 4%, rgba(226, 150, 125, 0.07), transparent 26rem),
+        radial-gradient(circle at 50% 120%, rgba(159, 211, 176, 0.05), transparent 40rem),
+        linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+    background-size: auto, auto, auto, 34px 34px, 34px 34px;
+}
+
+[data-theme="dark"] body::before { opacity: 0.06; }
+
+/* IMPROVED dark: header glass uses dark tint, not hardcoded cream */
+[data-theme="dark"] .site-header {
+    background: rgba(20, 17, 15, 0.78);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* IMPROVED dark: bring back hairlines (source uses dark ink, invisible on dark) */
+[data-theme="dark"] .about-section,
+[data-theme="dark"] .skills-section,
+[data-theme="dark"] .experience-section,
+[data-theme="dark"] .achievements-section,
+[data-theme="dark"] .projects-section,
+[data-theme="dark"] .contact,
+[data-theme="dark"] .site-footer,
+[data-theme="dark"] .skills-grid-cards,
+[data-theme="dark"] .toolkit-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .project-card-oss,
+[data-theme="dark"] .achievement-card,
+[data-theme="dark"] .project-screenshot,
+[data-theme="dark"] .project-featured-img,
+[data-theme="dark"] .terminal,
+[data-theme="dark"] .edu-card,
+[data-theme="dark"] .skill-pill,
+[data-theme="dark"] .coursework-tags span,
+[data-theme="dark"] .built-with-tags span,
+[data-theme="dark"] .contact-form,
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea {
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .nav-resume-link {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* IMPROVED dark: card surfaces lift slightly off the page for separation */
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .project-card-oss,
+[data-theme="dark"] .achievement-card,
+[data-theme="dark"] .toolkit-card,
+[data-theme="dark"] .edu-card {
+    background: var(--surface-low);
+}
+
+[data-theme="dark"] .project-card:hover,
+[data-theme="dark"] .achievement-card:hover {
+    background: var(--surface-container);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* IMPROVED dark: avatar = dark initials on sage; warm ring */
+[data-theme="dark"] .hero-avatar {
+    color: var(--background);
+    border-color: var(--surface-high);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* IMPROVED dark: hero badge + section number accents a touch brighter */
+[data-theme="dark"] .hero-badge {
+    border-color: rgba(159, 211, 176, 0.28);
+    background: rgba(159, 211, 176, 0.06);
+}
+
+/* IMPROVED dark: back-to-top + toggle sit on subtle surface, not pure flat */
+[data-theme="dark"] .theme-toggle {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] .back-to-top {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* IMPROVED: visible keyboard focus ring everywhere (WCAG 2.4.7) */
+:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+}
+
+/* IMPROVED: theme toggle + nav action cluster */
+.nav-actions {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: var(--primary);
+    background: transparent;
+    border: 1px solid var(--outline-variant);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: color 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.theme-toggle:hover {
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: inline; }
+
+/* IMPROVED: back-to-top button */
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 90;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    box-shadow: 0 6px 20px rgba(23, 49, 36, 0.28);
+    transition: opacity 260ms ease, transform 260ms ease, visibility 260ms;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover { background: var(--primary-soft); }
+[data-theme="dark"] .back-to-top { color: var(--background); }
+
 * {
     box-sizing: border-box;
 }
@@ -659,6 +854,101 @@ textarea {
     border-top: 1px solid rgba(28, 27, 27, 0.1);
 }
 
+/* IMPROVED: grouped skills with icon pills */
+.skills-groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.75rem 3rem;
+}
+
+.skill-group-title {
+    margin: 0 0 1.1rem;
+    color: var(--primary);
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.55rem;
+    letter-spacing: -0.01em;
+}
+
+.skill-pills {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    background: var(--surface-low);
+    border: 1px solid var(--outline-variant);
+    color: var(--on-surface);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: border-color 200ms ease, transform 200ms ease, background 200ms ease;
+}
+
+.skill-pill img {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* IMPROVED: inline text link (e.g. PersonalAI in About) */
+.about-copy strong .inline-link,
+.inline-link {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 200ms ease;
+}
+
+.about-copy strong .inline-link:hover,
+.inline-link:hover {
+    color: var(--primary);
+}
+
+/* IMPROVED: inline code (e.g. npx) in project copy */
+.project-card p code,
+.project-featured-content p code {
+    padding: 0.1em 0.4em;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85em;
+    background: rgba(144, 75, 54, 0.1);
+    color: var(--secondary);
+    border-radius: 2px;
+}
+
+.skill-pill:hover {
+    border-color: var(--secondary);
+    background: var(--surface-container);
+    transform: translateY(-2px);
+}
+
+/* staggered fade-up per pill when its group scrolls into view */
+@media (prefers-reduced-motion: no-preference) {
+    .skill-pill {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    .skill-group.visible .skill-pill {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .skill-group.visible .skill-pill:nth-child(2) { transition-delay: 0.05s; }
+    .skill-group.visible .skill-pill:nth-child(3) { transition-delay: 0.1s; }
+    .skill-group.visible .skill-pill:nth-child(4) { transition-delay: 0.15s; }
+    .skill-group.visible .skill-pill:nth-child(5) { transition-delay: 0.2s; }
+    .skill-group.visible .skill-pill:nth-child(6) { transition-delay: 0.25s; }
+    .skill-group.visible .skill-pill:nth-child(7) { transition-delay: 0.3s; }
+}
+
 .toolkit-card {
     display: flex;
     flex-direction: column;
@@ -1266,6 +1556,13 @@ textarea {
     background: #fff;
 }
 
+/* IMPROVED dark: keep focused inputs on a dark surface, not flashing white */
+[data-theme="dark"] .contact-form input:focus,
+[data-theme="dark"] .contact-form textarea:focus {
+    background: var(--surface-low);
+    box-shadow: 0 0 0 3px rgba(159, 211, 176, 0.22);
+}
+
 .contact-form input:focus + .input-icon,
 .contact-form textarea:focus + .input-icon {
     color: var(--primary);
@@ -1581,13 +1878,21 @@ textarea {
         width: min(var(--max), calc(100% - (var(--margin-mobile) * 2)));
     }
 
+    /* IMPROVED: keep brand · theme-toggle · hamburger on one row (was wrapping) */
     .nav {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr auto auto;
+        gap: 0.75rem;
         min-height: 78px;
+    }
+
+    .nav-actions {
+        order: 2;
+        gap: 0.5rem;
     }
 
     .menu-toggle {
         display: block;
+        order: 3;
     }
 
     /* Animate Hamburger Menu into 'X' when open */
@@ -1739,7 +2044,8 @@ textarea {
         gap: 1.5rem;
     }
 
-    .skills-grid-cards {
+    .skills-grid-cards,
+    .skills-groups {
         grid-template-columns: 1fr;
     }
 
