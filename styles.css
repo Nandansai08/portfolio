@@ -15,6 +15,9 @@
     --on-variant: #424844;
     --outline: #727973;
     --outline-variant: #c2c8c2;
+    --accent-gold: #a9793f;
+    --card-shadow: 6px 6px 0 rgba(23, 49, 36, 0.10);
+    --card-shadow-hover: 9px 9px 0 rgba(23, 49, 36, 0.14);
     --gutter: 32px;
     --margin-desktop: 80px;
     --margin-mobile: 24px;
@@ -40,6 +43,9 @@
     --on-variant: #c4bdb6;
     --outline: #8c847d;
     --outline-variant: #3a342f;
+    --accent-gold: #d9ac6c;
+    --card-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+    --card-shadow-hover: 9px 9px 0 rgba(0, 0, 0, 0.42);
     color-scheme: dark;
 }
 
@@ -232,9 +238,9 @@ body {
     background-image:
         radial-gradient(circle at 18% 12%, rgba(45, 71, 57, 0.08), transparent 26rem),
         radial-gradient(circle at 80% 6%, rgba(144, 75, 54, 0.08), transparent 24rem),
-        linear-gradient(rgba(28, 27, 27, 0.026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(28, 27, 27, 0.018) 1px, transparent 1px);
-    background-size: auto, auto, 34px 34px, 34px 34px;
+        linear-gradient(rgba(23, 49, 36, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 49, 36, 0.05) 1px, transparent 1px);
+    background-size: auto, auto, 32px 32px, 32px 32px;
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -358,6 +364,19 @@ textarea {
     text-transform: uppercase;
 }
 
+.kicker,
+.project-num,
+.toolkit-num,
+.timeline-period {
+    font-family: "JetBrains Mono", monospace;
+    letter-spacing: 0.08em;
+}
+
+.project-num,
+.toolkit-num {
+    color: var(--accent-gold);
+}
+
 .nav-links a {
     color: var(--on-variant);
     text-decoration: none;
@@ -448,9 +467,10 @@ textarea {
     margin: 0 0 2rem;
     padding: 0.6rem 1.4rem;
     color: var(--primary);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     border: 1px solid rgba(23, 49, 36, 0.2);
     background: rgba(23, 49, 36, 0.04);
@@ -641,6 +661,14 @@ textarea {
     border-left: 4px solid var(--primary);
 }
 
+/* IMPROVED: numbered step labels ("01 — ") matching notebook-style section headers */
+.achievements-heading .kicker::before { content: "01 — "; color: var(--accent-gold); }
+.about-heading .kicker::before { content: "02 — "; color: var(--accent-gold); }
+.skills-heading .kicker::before { content: "03 — "; color: var(--accent-gold); }
+.experience-heading .kicker::before { content: "04 — "; color: var(--accent-gold); }
+.projects-heading .kicker::before { content: "05 — "; color: var(--accent-gold); }
+.contact-copy .kicker::before { content: "06 — "; color: var(--accent-gold); }
+
 .stacked-links,
 .footer-links {
     display: grid;
@@ -709,8 +737,19 @@ textarea {
 /* Terminal Card */
 .terminal {
     background: var(--surface-low);
-    border: 1px solid rgba(28, 27, 27, 0.08);
+    border: 1.5px solid rgba(23, 49, 36, 0.22);
+    box-shadow: var(--card-shadow);
     overflow: hidden;
+    transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.terminal:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .terminal {
+    border-color: rgba(255, 255, 255, 0.14);
 }
 
 .terminal-bar {
@@ -780,12 +819,19 @@ textarea {
     align-items: flex-start;
     padding: 1.5rem;
     background: var(--surface-low);
+    border: 1.5px solid rgba(23, 49, 36, 0.16);
     border-left: 4px solid var(--primary);
-    transition: transform 300ms ease;
+    box-shadow: var(--card-shadow);
+    transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
 .edu-card:hover {
     transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="dark"] .edu-card {
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .edu-card:nth-child(2) {
@@ -1156,7 +1202,18 @@ textarea {
     margin-bottom: var(--section-gap);
     padding: 3rem;
     background: var(--surface-low);
-    border-top: 1px solid rgba(28, 27, 27, 0.12);
+    border: 1.5px solid rgba(23, 49, 36, 0.18);
+    border-top: 3px solid var(--primary);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 300ms ease;
+}
+
+.project-featured:hover {
+    box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="dark"] .project-featured {
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .project-featured-content h3 {
@@ -1282,7 +1339,9 @@ textarea {
     min-height: 420px;
     padding: 2rem;
     background: var(--surface-low);
-    border-top: 1px solid rgba(28, 27, 27, 0.12);
+    border: 1.5px solid rgba(23, 49, 36, 0.18);
+    border-top: 3px solid var(--primary);
+    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
     transition: transform 300ms ease, box-shadow 300ms ease;
@@ -1290,7 +1349,11 @@ textarea {
 
 .project-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(23, 49, 36, 0.08);
+    box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="dark"] .project-card {
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .project-card h3 {
@@ -1489,7 +1552,13 @@ textarea {
     gap: 0.85rem;
     padding: 2.25rem 2rem;
     background: var(--surface-container);
-    border: 1px solid rgba(28, 27, 27, 0.04);
+    border: 1.5px solid rgba(23, 49, 36, 0.18);
+    border-top: 3px solid var(--primary);
+    box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] .contact-form {
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .hp-container {
