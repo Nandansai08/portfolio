@@ -206,11 +206,12 @@ textarea {
 .contact-copy h2, .contact-copy p,
 .site-footer p, .site-footer h3,
 .hero-stats strong, .hero-stats span,
-.achievement-card strong, .ach-label, .ach-context {
+.achievement-card strong, .ach-label, .ach-context,
+.scroll-hint, .brand, .nav-links a {
     text-shadow:
         0 0 2px var(--background), 0 0 2px var(--background), 0 0 2px var(--background),
-        0 0 4px var(--background), 0 0 4px var(--background),
-        0 0 7px var(--background);
+        0 0 4px var(--background), 0 0 4px var(--background), 0 0 4px var(--background),
+        0 0 7px var(--background), 0 0 7px var(--background);
 }
 
 .skip-link,
