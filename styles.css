@@ -1893,9 +1893,17 @@ textarea {
     .about-education,
     .project-featured,
     .project-grid,
-    .contact,
-    .footer-grid {
+    .contact {
         grid-template-columns: 1fr;
+    }
+
+    /* IMPROVED: keep Connect + Navigate side by side on mobile instead of fully stacking */
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-grid > div:first-child {
+        grid-column: 1 / -1;
     }
 
     .skills-groups {
