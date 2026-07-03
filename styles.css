@@ -1765,8 +1765,18 @@ textarea {
         transform: translateY(-5px) rotate(-45deg);
     }
 
+    /* IMPROVED: slide the whole panel open/closed instead of an abrupt display toggle */
     .nav-links {
-        display: none;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: grid;
+        justify-self: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        border-top: 0 solid var(--outline-variant);
+        transition: max-height 320ms ease, border-top-width 320ms ease, visibility 0s linear 320ms;
     }
 
     .hire-link {
@@ -1775,13 +1785,11 @@ textarea {
 
     /* Polished Mobile Menu with entrance animations */
     .nav-links.open {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        display: grid;
-        justify-self: stretch;
-        gap: 0;
+        max-height: 800px;
+        visibility: visible;
         padding: 0 0 0.4rem;
-        border-top: 1px solid var(--outline-variant);
+        border-top-width: 1px;
+        transition: max-height 320ms ease, border-top-width 320ms ease, visibility 0s linear 0s;
     }
 
     /* IMPROVED: plain list rows with a thin separator, not boxed cards */
