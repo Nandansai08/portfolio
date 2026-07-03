@@ -1808,14 +1808,25 @@ textarea {
         min-height: 70px;
     }
 
+    /* explicit row+column for all three so an expanded .nav-links.open (row 2)
+       never pushes brand out of its cell via auto-placement */
+    .brand {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
     .nav-actions {
         order: 2;
+        grid-row: 1;
+        grid-column: 2;
         gap: 0.5rem;
     }
 
     .menu-toggle {
         display: block;
         order: 3;
+        grid-row: 1;
+        grid-column: 3;
     }
 
     /* Animate Hamburger Menu into 'X' when open */
@@ -1843,6 +1854,7 @@ textarea {
     /* Polished Mobile Menu with entrance animations */
     .nav-links.open {
         grid-column: 1 / -1;
+        grid-row: 2;
         display: grid;
         justify-self: stretch;
         gap: 0.7rem;
