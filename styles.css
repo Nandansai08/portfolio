@@ -309,6 +309,10 @@ textarea {
     text-decoration: none;
 }
 
+.brand-accent {
+    color: var(--accent-gold);
+}
+
 .nav-links {
     justify-self: center;
     display: flex;
